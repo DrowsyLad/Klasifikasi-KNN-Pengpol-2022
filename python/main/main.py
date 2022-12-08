@@ -8,7 +8,7 @@ import pandas as pd
 from numpy.random.mtrand import uniform
 from sklearn import *
 
-SERIAL_PORT = "/dev/ttyACM0"
+SERIAL_PORT = "COM9"
 BAUDRATE = 9600
 
 # Init Serial Communication
@@ -26,7 +26,7 @@ incoming_bytes = b''
 
 def read_data():
     global indep_data, dep_data
-    data_path = '/home/danidzz/Development/pengenalan_pola_project/python/asset/jeruk.csv'
+    data_path = 'C:/Data/Project/Pengpol/python/asset/jeruk.csv'
     df = pd.read_csv(data_path)
     # memisahkan data independent (fitur) dan dependent (class)
     indep_data = df.iloc[:, 1:5]
@@ -65,13 +65,13 @@ def knn_classifier(data, neighbours):
         ser.write(b'f')
         time.sleep(1)
         ser.write("k".encode())
-        print("Jeruk Kunci")
+        print("Apel")
     else:
         time.sleep(1)
         ser.write(b'f')
         time.sleep(1)
         ser.write("s".encode())
-        print("Jeruk S Madu")
+        print("Stroberi")
     time.sleep(1)
     
 if __name__ == "__main__":
